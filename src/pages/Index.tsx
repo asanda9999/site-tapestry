@@ -88,9 +88,9 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Featured Projects
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Each project represents a unique challenge solved with innovative 
-              solutions and modern web technologies.
+              solutions and modern web technologies. Drag to explore the 3D carousel.
             </p>
           </div>
           
