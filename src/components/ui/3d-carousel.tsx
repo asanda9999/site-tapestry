@@ -79,14 +79,18 @@ const Carousel = memo(
     controls,
     projects,
     isCarouselActive,
+    onNext,
+    onPrev,
   }: {
     handleClick: (project: Project, index: number) => void
     controls: any
     projects: Project[]
     isCarouselActive: boolean
+    onNext: () => void
+    onPrev: () => void
   }) => {
     const isScreenSizeSm = useMediaQuery("(max-width: 640px)")
-    const cylinderWidth = isScreenSizeSm ? 1100 : 1800
+    const cylinderWidth = isScreenSizeSm ? 1000 : 1500
     const faceCount = projects.length
     const faceWidth = cylinderWidth / faceCount
     const radius = cylinderWidth / (2 * Math.PI)
@@ -98,7 +102,7 @@ const Carousel = memo(
 
     return (
       <div
-        className="flex h-full items-center justify-center"
+        className="flex h-full items-center justify-center relative"
         style={{
           perspective: "1000px",
           transformStyle: "preserve-3d",
@@ -145,7 +149,8 @@ const Carousel = memo(
               onClick={() => handleClick(project, i)}
             >
               <motion.div
-                className="relative w-full h-full rounded-lg overflow-hidden group cursor-pointer"
+                className="relative w-full h-full rounded-lg overflow-hidden group cursor-pointer flex items-center justify-center"
+                style={{ aspectRatio: '1/1', maxWidth: '220px', maxHeight: '220px', minWidth: '180px', minHeight: '180px' }}
                 initial={{ filter: "blur(4px)" }}
                 animate={{ filter: "blur(0px)" }}
                 transition={transition}
@@ -154,17 +159,44 @@ const Carousel = memo(
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
+                  style={{ maxWidth: '100%', maxHeight: '100%', aspectRatio: '1/1' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-foreground font-semibold text-sm mb-1">{project.title}</h3>
-                  <p className="text-muted-foreground text-xs line-clamp-2">{project.description}</p>
+                  <h3 className="text-foreground font-semibold text-base drop-shadow-lg">{project.title}</h3>
                 </div>
               </motion.div>
             </motion.div>
           ))}
         </motion.div>
+        
+        {/* Navigation Controls */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between items-center pointer-events-none z-10">
+          <button
+            onClick={onPrev}
+            className="pointer-events-auto bg-background/80 backdrop-blur-sm border border-border rounded-full p-3 hover:bg-background/90 transition-colors shadow-lg"
+            aria-label="Previous project"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+          <button
+            onClick={onNext}
+            className="pointer-events-auto bg-background/80 backdrop-blur-sm border border-border rounded-full p-3 hover:bg-background/90 transition-colors shadow-lg"
+            aria-label="Next project"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+        
+        {/* Keyboard Navigation Hint */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-muted-foreground bg-background/50 backdrop-blur-sm px-3 py-1 rounded-full">
+          Use ← → keys or drag to navigate
+        </div>
       </div>
     )
   }
@@ -173,6 +205,7 @@ const Carousel = memo(
 function ThreeDPhotoCarousel({ projects }: { projects: Project[] }) {
   const [activeProject, setActiveProject] = useState<Project | null>(null)
   const [isCarouselActive, setIsCarouselActive] = useState(true)
+  const [currentRotation, setCurrentRotation] = useState(0)
   const controls = useAnimation()
 
   const handleClick = (project: Project) => {
@@ -185,6 +218,54 @@ function ThreeDPhotoCarousel({ projects }: { projects: Project[] }) {
     setActiveProject(null)
     setIsCarouselActive(true)
   }
+
+  const handleNext = () => {
+    const rotationPerProject = 360 / projects.length
+    const newRotation = currentRotation - rotationPerProject
+    setCurrentRotation(newRotation)
+    controls.start({
+      rotateY: newRotation,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 30,
+        mass: 0.1,
+      },
+    })
+  }
+
+  const handlePrev = () => {
+    const rotationPerProject = 360 / projects.length
+    const newRotation = currentRotation + rotationPerProject
+    setCurrentRotation(newRotation)
+    controls.start({
+      rotateY: newRotation,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 30,
+        mass: 0.1,
+      },
+    })
+  }
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isCarouselActive) return
+      
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        handlePrev()
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault()
+        handleNext()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isCarouselActive, currentRotation])
 
   return (
     <motion.div layout className="relative">
@@ -275,12 +356,14 @@ function ThreeDPhotoCarousel({ projects }: { projects: Project[] }) {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="relative h-[500px] w-full overflow-hidden">
+      <div className="relative h-[400px] w-full overflow-hidden">
         <Carousel
           handleClick={handleClick}
           controls={controls}
           projects={projects}
           isCarouselActive={isCarouselActive}
+          onNext={handleNext}
+          onPrev={handlePrev}
         />
       </div>
     </motion.div>

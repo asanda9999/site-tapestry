@@ -82,19 +82,21 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4">
+      <section id="projects" className="py-48 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <div className="text-center mb-28">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-10">
               Featured Projects
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-16">
               Each project represents a unique challenge solved with innovative 
               solutions and modern web technologies. Drag to explore the 3D carousel.
             </p>
           </div>
           
-          <ProjectCarousel />
+          <div className="py-16">
+            <ProjectCarousel />
+          </div>
         </div>
       </section>
 
