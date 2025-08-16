@@ -51,7 +51,7 @@ const Index = () => {
                 className="border-border hover:border-primary hover:bg-card/50 backdrop-blur-sm"
                 asChild
               >
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/asanda9999" target="_blank" rel="noopener noreferrer">
                   <Github className="w-4 h-4 mr-2" />
                   GitHub
                 </a>
@@ -63,7 +63,7 @@ const Index = () => {
                 className="border-border hover:border-primary hover:bg-card/50 backdrop-blur-sm"
                 asChild
               >
-                <a href="mailto:contact@example.com">
+                <a href="mailto:asandamkhize9@gmail.com">
                   <Mail className="w-4 h-4 mr-2" />
                   Contact
                 </a>
@@ -104,11 +104,11 @@ const Index = () => {
       <footer className="border-t border-border bg-card/30 backdrop-blur-sm py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-muted-foreground mb-4">
-            Crafted with passion and precision
+            Crafted with creativity 
           </p>
           <div className="flex items-center justify-center gap-6">
             <a 
-              href="https://github.com" 
+              href="https://github.com/asanda9999" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors duration-200"
@@ -116,7 +116,7 @@ const Index = () => {
               <Github className="w-5 h-5" />
             </a>
             <a 
-              href="mailto:contact@example.com"
+              href="mailto:asandamkhize9@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors duration-200"
             >
               <Mail className="w-5 h-5" />

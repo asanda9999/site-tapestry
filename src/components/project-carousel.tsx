@@ -40,8 +40,8 @@ const projects = [
     description: "An IT solutions company website specializing in creating custom landing pages for small businesses. Features modern design, lead generation forms, service showcases, and responsive layouts optimized for conversion and user engagement.",
     image: Hydra,
     technologies: ["React", "Framer Motion", "Tailwind CSS", "Vercel"],
-    liveUrl: "https://my-portfolio.vercel.app",
-    githubUrl: "https://github.com/yourusername/portfolio",
+    liveUrl: "https://landing-craft-five.vercel.app/",
+    githubUrl: "https://github.com/asanda9999/landing-craft.git",
     year: "2025"
   },
 
@@ -59,11 +59,11 @@ const projects = [
   {
     id: "6",
     title: "Womarite Website",
-    description: "Dynamic social media platform with real-time messaging, media sharing, user profiles, and advanced privacy controls. Built for scalability and user engagement.",
+    description: "Maritime company profile landing page showcasing services, projects, and company information. Features a modern design, responsive layout, and smooth animations to enhance user experience.",
     image: Anchor,
     technologies: ["React", "Typescript", "Framer-motion", "Vercel"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    liveUrl: "https://womaritime.vercel.app/",
+    githubUrl: "https://github.com/asanda9999/ocean-wave-women-48.git",
     year: "2025"
   },
     {
