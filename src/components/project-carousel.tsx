@@ -6,6 +6,7 @@ import Anchor from "@/assets/anchor.jpg"
 import Oracle from "@/assets/generative.jpg"
 import XO from "@/assets/tic-tac-toe.jpg"
 import Tracker from "@/assets/expenses.jpg"
+import Trade from "@/assets/trend.jpg"
 
 
 const projects = [
@@ -58,7 +59,7 @@ const projects = [
 
   {
     id: "6",
-    title: "Womarite Website",
+    title: "Maritime Website",
     description: "Maritime company profile landing page showcasing services, projects, and company information. Features a modern design, responsive layout, and smooth animations to enhance user experience.",
     image: Anchor,
     technologies: ["React", "Typescript", "Framer-motion", "Vercel"],
@@ -87,9 +88,20 @@ const projects = [
     githubUrl: "https://github.com/asanda9999/tic-tac.git",
     year: "2025"
   },
+  
+  {
+    id: "9",
+    title: "Trade Journal",
+    description: "Trade journal application that helps users track their trades and visualize their trading habits. Features include trade categorization and detailed financial reports.",
+    image: Trade,
+    technologies: ["HTML", "JavaScript", "Vercel","CSS"],
+    liveUrl: "https://trade-journal-phi.vercel.app/",
+    githubUrl: "https://github.com/asanda9999/Trade-journal.git",
+    year: "2025"
+  },
 
       {
-    id: "9",
+    id: "10",
     title: "Expense Tracker",
     description: "A personal finance application that helps users track their expenses and visualize spending habits. Features include expense categorization and detailed financial reports.",
     image: Tracker,

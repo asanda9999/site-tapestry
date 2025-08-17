@@ -48,7 +48,7 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-border hover:border-primary hover:bg-card/50 backdrop-blur-sm"
+                className="border-border backdrop-blur-sm"
                 asChild
               >
                 <a href="https://github.com/asanda9999" target="_blank" rel="noopener noreferrer">
@@ -60,7 +60,7 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-border hover:border-primary hover:bg-card/50 backdrop-blur-sm"
+                className="border-border backdrop-blur-sm"
                 asChild
               >
                 <a href="mailto:asandamkhize9@gmail.com">
@@ -104,7 +104,7 @@ const Index = () => {
       <footer className="border-t border-border bg-card/30 backdrop-blur-sm py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-muted-foreground mb-4">
-            Crafted with creativity 
+          © 2025 Hydra Tech Solutions. Crafted with Creativity.
           </p>
           <div className="flex items-center justify-center gap-6">
             <a 
