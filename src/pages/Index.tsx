@@ -104,7 +104,7 @@ const Index = () => {
       <footer className="border-t border-border bg-card/30 backdrop-blur-sm py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-muted-foreground mb-4">
-          © 2025 Hydra Tech Solutions. Crafted with Creativity.
+         All rights reserved © 2025 Hydra Tech.
           </p>
           <div className="flex items-center justify-center gap-6">
             <a 

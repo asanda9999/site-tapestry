@@ -7,6 +7,7 @@ import Oracle from "@/assets/generative.jpg"
 import XO from "@/assets/tic-tac-toe.jpg"
 import Tracker from "@/assets/expenses.jpg"
 import Trade from "@/assets/trend.jpg"
+import Vocara from "@/assets/CV.jpg"
 
 
 const projects = [
@@ -108,6 +109,17 @@ const projects = [
     technologies: ["C#", "ASP.NET MVC", "Bootstrap", "SQL Server"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/asanda9999/Exepnse-Tracker.git",
+    year: "2025"
+  },
+
+  {
+    id: "11",
+    title: "Cover Letter Generator",
+    description: "A cv to cover letter generator application that helps users generate cover letters based on their cv. AI Gemini API is used to generate cover letters.",
+    image: Vocara,
+    technologies: ["Gemini API", "HTML", "JavaScript", "Vercel","CSS"],
+    liveUrl: "https://vocara.vercel.app/",
+    githubUrl: "https://github.com/asanda9999/cv-to-cover-magic.git",
     year: "2025"
   }
 ]
